@@ -49,7 +49,10 @@ var genCmd = &cobra.Command{
 			log.Fatalf("Error generating password: %v", err)
 		}
 
-		entropy := gofee.CalculateEntropy(len(gofee.Charset), options.length)
+		entropy, err := gofee.CalculateEntropy(len(gofee.Charset), options.length)
+		if err != nil {
+			log.Fatalf("Error calculating entropy: %v", err)
+		}
 
 		fmt.Printf("Entropy: %.2f bits\n", entropy)
 		fmt.Println("Password:", pw)
