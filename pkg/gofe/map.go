@@ -10,9 +10,14 @@ import (
 // It is built based on the provided PasswordConfig.
 var Charset string
 
-// MapToCharset generates a random password of length 'n' using the configured Charset.
+// MapToCharset generates a random password of the given length using the configured Charset.
 // It returns the generated password or an error if Charset is empty or random number generation fails.
-func MapToCharset(n int, config PasswordConfig) (string, error) {
+func MapToCharset(length int, config PasswordConfig) (string, error) {
+	// Return an error if the length is invalid.
+	if length <= 0 {
+		return "", fmt.Errorf("length must be greater than 0")
+	}
+
 	// Build the Charset based on the provided configuration.
 	Charset = BuildCharset(config)
 	charsetLen := int64(len(Charset))
@@ -23,10 +28,10 @@ func MapToCharset(n int, config PasswordConfig) (string, error) {
 	}
 
 	// Allocate space for the generated password.
-	ret := make([]byte, n)
+	ret := make([]byte, length)
 
-	// Generate 'n' random characters from the Charset.
-	for i := 0; i < n; i++ {
+	// Generate 'l' random characters from the Charset.
+	for i := 0; i < length; i++ {
 		// Generate a random number in the range [0, charsetLen).
 		num, err := rand.Int(rand.Reader, big.NewInt(charsetLen))
 		if err != nil {
