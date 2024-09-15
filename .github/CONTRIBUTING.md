@@ -27,16 +27,18 @@ Please try to:
 - Keep your pull requests focused and avoid including unrelated changes.
 - Follow the project's coding standards and best practices.
 
-Contributions to this project are released to the public under the [project's open source license](license).
+Contributions to this project are released to the public under the [project's open source license][license].
 
-Please note that this project adheres to a [Code of Conduct](codeofconduct). By participating in this project you agree to abide by its terms.
+Please note that this project adheres to a [Code of Conduct][code-of-conduct]. By participating in this project you agree to abide by its terms.
 
 Thank you for contributing!
 
 ## Ressources
 
-- [How to Contribute to Open Source?](https://opensource.guide/how-to-contribute/)
-- [About Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [How to Contribute to Open Source?][How to Contribute to Open Source?]
+- [About Pull Requests][About Pull Requests]
 
 [license]: ../LICENSE
-[codeofconduct]: CODE_OF_CONDUCT.md
+[code-of-conduct]: CODE_OF_CONDUCT.md
+[How to Contribute to Open Source?]: https://opensource.guide/how-to-contribute/
+[About Pull Requests]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

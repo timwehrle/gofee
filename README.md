@@ -20,7 +20,7 @@ Originally, the name results out of "Go" + "Safe" = "Gofe", but since this name 
 
 While there are already many password generators available, we felt the need for one that improves usability and customizability. Some existing generators lack flexibility, which is why we created Gofee.
 
-You can also contribute additional features ([Contributing Guidelines](contributing)).
+You can also contribute additional features ([Contributing Guidelines][contributing]).
 
 ## Building and Usage
 
@@ -34,6 +34,6 @@ For optimal security, always use long, complex passwords. Once you have generate
 
 ## Contributing
 
-If something feels off, you see an opportunity to improve performance, or think some functionality is missing, we’d love to hear from you! Please review our [contributing docs](contributing) for detailed instructions on how to provide feedback or submit a pull request. Thank you!
+If something feels off, you see an opportunity to improve performance, or think some functionality is missing, we’d love to hear from you! Please review our [contributing docs][contributing] for detailed instructions on how to provide feedback or submit a pull request. Thank you!
 
 [contributing]: ./.github/CONTRIBUTING.md
