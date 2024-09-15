@@ -2,6 +2,7 @@ package gofee
 
 import "strings"
 
+// Charset constants for lowercase letters, uppercase letters, digits, and symbols.
 const (
 	Lowers  = "abcdefghijklmnopqrstuvwxyz"
 	Uppers  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
