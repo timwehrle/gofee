@@ -4,8 +4,8 @@ test:
 
 .PHONY: test/cover
 test/cover:
-	go test -v -coverprofile=/tmp/coverage.out ./...
-	go tool cover -html=/tmp/coverage.out
+	go test -v -coverprofile=c.out ./...
+	go tool cover -html=c.out
 
 .PHONY: tidy
 tidy:
