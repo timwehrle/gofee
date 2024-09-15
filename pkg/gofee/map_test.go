@@ -123,23 +123,12 @@ func TestMapToCharset(t *testing.T) {
 
 			// Verify that all characters in the generated password are from the expected set.
 			for _, c := range got {
-				if !contains(tt.expectedSet, c) {
+				if !Contains(tt.expectedSet, c) {
 					t.Errorf("MapToCharset() character = %v, not found in expected set", c)
 				}
 			}
 		})
 	}
-}
-
-// contains checks if a given rune (character) is part of the expected character set.
-// It returns true if the character is in the set, false otherwise.
-func contains(set string, char rune) bool {
-	for _, c := range set {
-		if c == char {
-			return true
-		}
-	}
-	return false
 }
 
 // errReader is a mock reader that always returns an error, used to simulate failure in rand.Reader.
