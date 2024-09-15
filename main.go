@@ -1,6 +1,6 @@
 package main
 
-import "gofe/cmd"
+import "gofee/cmd"
 
 func main() {
 	cmd.Execute()
