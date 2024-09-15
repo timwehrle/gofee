@@ -71,3 +71,152 @@ func TestGenerateRandomness(t *testing.T) {
 		}
 	}
 }
+
+// TestGenerate tests the Generate function for various password generation scenarios.
+func TestGenerate(t *testing.T) {
+    type args struct {
+        length int
+        config PasswordConfig
+    }
+
+	// Define a list of test cases with expected outcomes.
+    tests := []struct {
+        name         string
+        args         args
+        wantedLength int
+        wantedSet    string
+        wantErr      bool
+    }{
+        {
+            name: "Valid length and charset",
+            args: args{
+                length: 16,
+                config: PasswordConfig{
+                    IncludeLowers:  true,
+                    IncludeUppers:  true,
+                    IncludeDigits:  true,
+                    IncludeSymbols: true,
+                },
+            },
+            wantedLength: 16,
+            wantedSet:    All,
+            wantErr:      false,
+        },
+        {
+            name: "Invalid length",
+            args: args{
+                length: 0,
+                config: PasswordConfig{
+                    IncludeLowers:  true,
+                    IncludeUppers:  true,
+                    IncludeDigits:  true,
+                    IncludeSymbols: true,
+                },
+            },
+            wantedLength: 0,
+            wantedSet:    All,
+            wantErr:      true,
+        },
+        {
+            name: "Empty charset",
+            args: args{
+                length: 16,
+                config: PasswordConfig{
+                    IncludeLowers:  false,
+                    IncludeUppers:  false,
+                    IncludeDigits:  false,
+                    IncludeSymbols: false,
+                },
+            },
+            wantedLength: 0,
+            wantedSet:    "",
+            wantErr:      true,
+        },
+        {
+            name: "Only lowercase",
+            args: args{
+                length: 8,
+                config: PasswordConfig{
+                    IncludeLowers:  true,
+                    IncludeUppers:  false,
+                    IncludeDigits:  false,
+                    IncludeSymbols: false,
+                },
+            },
+            wantedLength: 8,
+            wantedSet:    Lowers,
+            wantErr:      false,
+        },
+        {
+            name: "Only uppercase",
+            args: args{
+                length: 8,
+                config: PasswordConfig{
+                    IncludeLowers:  false,
+                    IncludeUppers:  true,
+                    IncludeDigits:  false,
+                    IncludeSymbols: false,
+                },
+            },
+            wantedLength: 8,
+            wantedSet:    Uppers,
+            wantErr:      false,
+        },
+        {
+            name: "Only digits",
+            args: args{
+                length: 8,
+                config: PasswordConfig{
+                    IncludeLowers:  false,
+                    IncludeUppers:  false,
+                    IncludeDigits:  true,
+                    IncludeSymbols: false,
+                },
+            },
+            wantedLength: 8,
+            wantedSet:    Digits,
+            wantErr:      false,
+        },
+        {
+            name: "Only symbols",
+            args: args{
+                length: 8,
+                config: PasswordConfig{
+                    IncludeLowers:  false,
+                    IncludeUppers:  false,
+                    IncludeDigits:  false,
+                    IncludeSymbols: true,
+                },
+            },
+            wantedLength: 8,
+            wantedSet:    Symbols,
+            wantErr:      false,
+        },
+    }
+
+	// Iterate over the defined test cases.
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+			// Call the Generate function with the provided arguments.
+            pw, err := Generate(tt.args.length, tt.args.config)
+
+			// Check if an error was expected or not.
+            if (err != nil) != tt.wantErr {
+                t.Errorf("Generate() error = %v, wantErr %v", err, tt.wantErr)
+                return
+            }
+
+			// Check if the generated password length matches the expected length.
+            if len(pw) != tt.wantedLength {
+                t.Errorf("Generate() length = %v, wantedLength %v", len(pw), tt.wantedLength)
+			}
+
+			// Validate if the generated password contains only characters from the expected set.
+            for _, char := range pw {
+                if !Contains(tt.wantedSet, char) {
+                    t.Errorf("Generate() contains invalid character = %v, wantedSet %v", string(char), tt.wantedSet)
+                }
+            }
+        })
+    }
+}
