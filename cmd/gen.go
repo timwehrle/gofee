@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"gofe/pkg/gofe"
+	"gofee/pkg/gofee"
 	"log"
 
 	"github.com/spf13/cobra"
@@ -37,19 +37,19 @@ var genCmd = &cobra.Command{
 	Short:   "Generate a password",
 	Run: func(cmd *cobra.Command, args []string) {
 
-		config := gofe.PasswordConfig{
+		config := gofee.PasswordConfig{
 			IncludeLowers:  !options.lowers,
 			IncludeUppers:  !options.uppers,
 			IncludeDigits:  !options.digits,
 			IncludeSymbols: !options.symbols,
 		}
 
-		pw, err := gofe.Generate(options.length, config)
+		pw, err := gofee.Generate(options.length, config)
 		if err != nil {
 			log.Fatalf("Error generating password: %v", err)
 		}
 
-		entropy := gofe.CalculateEntropy(len(gofe.Charset), options.length)
+		entropy := gofee.CalculateEntropy(len(gofee.Charset), options.length)
 
 		fmt.Printf("Entropy: %.2f bits\n", entropy)
 		fmt.Println("Password:", pw)

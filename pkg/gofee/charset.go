@@ -1,4 +1,4 @@
-package gofe
+package gofee
 
 import "strings"
 

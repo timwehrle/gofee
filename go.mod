@@ -1,4 +1,4 @@
-module gofe
+module gofee
 
 go 1.22.6
 

@@ -8,10 +8,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "gofe",
+	Use:     "gofee",
 	Version: "0.0.1",
-	Short:   "gofe is a simple password generator, which is reliable and secure.",
-	Long:    "gofe is a simple password generator, which is reliable and secure.",
+	Short:   "Gofee is a simple password generator, which is reliable and secure.",
+	Long:    "Gofee is a simple password generator, which is reliable and secure.",
 }
 
 func Execute() {
