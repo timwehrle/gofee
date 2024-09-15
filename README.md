@@ -20,7 +20,7 @@ Originally, the name results out of "Go" + "Safe" = "Gofe", but since this name 
 
 While there are already many password generators available, we felt the need for one that improves usability and customizability. Some existing generators lack flexibility, which is why we created Gofee.
 
-You can also contribute additional features ([Contributing Guidelines][contributing]).
+You can also contribute additional features, have a look on our [contributing docs][contributing].
 
 ## Building and Usage
 
