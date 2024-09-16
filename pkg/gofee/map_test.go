@@ -103,6 +103,38 @@ func TestMapToCharset(t *testing.T) {
 			expectedLen: 16,
 			expectedSet: Uppers + Digits + Symbols, // Expected charset excludes lowercase.
 		},
+		{
+			name: "Valid charset with type pin",
+			args: args{
+				length: 16,
+				config: PasswordConfig{
+					IncludeLowers:  false,
+					IncludeUppers:  false,
+					IncludeDigits: false,
+					IncludeSymbols: false,
+					Type: "pin",
+				},
+			},
+			wantErr:     false,
+			expectedLen: 16,
+			expectedSet: Digits, // Expected charset is only digits.
+		},
+		{
+			name: "Valid charset with type memorable",
+			args: args{
+				length: 16,
+				config: PasswordConfig{
+					IncludeLowers:  false,
+					IncludeUppers:  false,
+					IncludeDigits: false,
+					IncludeSymbols: false,
+					Type: "memorable",
+				},
+			},
+			wantErr:     false,
+			expectedLen: 16,
+			expectedSet: Lowers + Uppers, // Expected charset includes lowercase and uppercase.
+		},
 	}
 
 	// Iterate through each test case and run the test.

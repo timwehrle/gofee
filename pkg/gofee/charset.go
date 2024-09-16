@@ -16,9 +16,18 @@ type PasswordConfig struct {
 	IncludeUppers  bool
 	IncludeDigits  bool
 	IncludeSymbols bool
+	Type string
 }
 
 func BuildCharset(config PasswordConfig) string {
+
+	switch config.Type {
+	case "pin":
+		return Digits
+	case "memorable":
+		return Lowers + Uppers
+	}
+
 	if config.IncludeLowers && config.IncludeUppers && config.IncludeDigits && config.IncludeSymbols {
 		return All
 	}
