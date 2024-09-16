@@ -1,0 +1,80 @@
+version: 2
+
+project_name: gofee
+
+release:
+  github:
+    owner: timwehrle
+    name: gofee
+  draft: true
+  header: |
+    ## Features
+
+    List of newly introduced features:
+
+    - Item 1
+    - Item 2
+
+    ## Bug fixes
+
+    List of fixed issues:
+
+    - Item 1
+    - Item 2
+
+    ## Code changes
+
+    - Item 1
+    - Item 2
+
+git:
+  tag_sort: semver
+
+before:
+  hooks:
+    - go mod tidy
+    - go test -v ./...
+
+builds:
+  - env:
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - 386
+      - arm
+    goarm:
+      - 6
+    ignore:
+      - goos: windows
+        goarch: arm
+      - goos: windows
+        goarch: arm64
+    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    binary: gofee
+
+archives:
+  - id: binaries
+    name_template: >-
+      {{- .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end -}}
+
+snapshot:
+  version_template: SNAPSHOT-{{ .Commit }}
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^tests:"
