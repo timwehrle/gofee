@@ -2,6 +2,8 @@ package gofee
 
 import "testing"
 
+// TestContains tests the Contains function
+// It tests if the function returns true if the character is in the set
 func TestContains(t *testing.T) {
 	type args struct {
 		set  string
