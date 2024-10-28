@@ -2,11 +2,12 @@ package cmd
 
 import (
 	"fmt"
-	"gofee/pkg/gofee"
 	"log"
 	"os"
 	"regexp"
 	"strings"
+
+	"github.com/timwehrle/gofee/pkg/gofee"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"

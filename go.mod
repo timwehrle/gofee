@@ -1,4 +1,4 @@
-module gofee
+module github.com/timwehrle/gofee
 
 go 1.23.1
 
