@@ -9,7 +9,7 @@ func TestContains(t *testing.T) {
 		set  string
 		char rune
 	}
-	
+
 	tests := []struct {
 		name string
 		args args

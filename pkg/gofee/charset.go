@@ -16,7 +16,7 @@ type PasswordConfig struct {
 	IncludeUppers  bool
 	IncludeDigits  bool
 	IncludeSymbols bool
-	Type string
+	Type           string
 }
 
 func BuildCharset(config PasswordConfig) string {

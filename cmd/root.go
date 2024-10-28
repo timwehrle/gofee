@@ -17,17 +17,17 @@ const (
 	defaultLength int = 16
 
 	MAJOR = 0
-    MINOR = 1
-    PATCH = 0
+	MINOR = 1
+	PATCH = 0
 )
 
 // Options for the generate command
 var options struct {
-	length  int
-	lowers  bool
-	uppers  bool
-	digits  bool
-	symbols bool
+	length       int
+	lowers       bool
+	uppers       bool
+	digits       bool
+	symbols      bool
 	passwordType string
 }
 
@@ -71,14 +71,14 @@ var rootCmd = &cobra.Command{
 	Version: fmt.Sprintf("%d.%d.%d", MAJOR, MINOR, PATCH),
 	Example: example,
 	Short:   "Gofee is a simple password generator, which is reliable and secure.",
-	Long: long,
+	Long:    long,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := gofee.PasswordConfig{
 			IncludeLowers:  !options.lowers,
 			IncludeUppers:  !options.uppers,
 			IncludeDigits:  !options.digits,
 			IncludeSymbols: !options.symbols,
-			Type: options.passwordType,
+			Type:           options.passwordType,
 		}
 
 		pw, err := gofee.Generate(options.length, config)
@@ -90,13 +90,12 @@ var rootCmd = &cobra.Command{
 		if err != nil {
 			log.Fatalf("Error calculating entropy: %v", err)
 		}
-		
+
 		fmt.Print("Entropy: ")
 		color.Green("%.2f bits", entropy)
-		
+
 		fmt.Printf("Password: %s", color.GreenString(pw))
 	},
-	
 }
 
 func Execute() {

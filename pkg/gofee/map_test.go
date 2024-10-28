@@ -110,9 +110,9 @@ func TestMapToCharset(t *testing.T) {
 				config: PasswordConfig{
 					IncludeLowers:  false,
 					IncludeUppers:  false,
-					IncludeDigits: false,
+					IncludeDigits:  false,
 					IncludeSymbols: false,
-					Type: "pin",
+					Type:           "pin",
 				},
 			},
 			wantErr:     false,
@@ -126,9 +126,9 @@ func TestMapToCharset(t *testing.T) {
 				config: PasswordConfig{
 					IncludeLowers:  false,
 					IncludeUppers:  false,
-					IncludeDigits: false,
+					IncludeDigits:  false,
 					IncludeSymbols: false,
-					Type: "memorable",
+					Type:           "memorable",
 				},
 			},
 			wantErr:     false,
